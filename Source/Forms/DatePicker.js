@@ -278,7 +278,8 @@ var DatePicker;
 			if ($type(date) == "string") date = new Date(date);
 			var startDate = (date)?new Date(date.getTime()):new Date();
 			var hours = startDate.get('hours');
-			startDate.setDate(1);
+			if(hours.toInt()===0) hours=23; //XXX new code
+                        startDate.setDate(1);
 			var startDay = startDate.getDay( );						//line added
 			if ( startDay < this.options.weekStartOffset ) startDay += 7;			//line added
 			startDate.setTime((startDate.getTime() - (Date.units.day() * (startDay))) + 
